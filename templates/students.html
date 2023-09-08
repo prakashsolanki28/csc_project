@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student List</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+</head>
+<body>
+
+	<div class="container">
+		<div class="card mt-3">
+			<div class="card-header">
+				<h5 class="float-start">Student List</h5>
+				<a href="/" class="btn btn-outline-success float-end">Add Student</a>
+			</div>
+			<div class="card-body">
+				<table id="students" class="table table-striped" style="width:100%">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for student in students %}
+						<tr>
+							<td>{{ student.name }}</td>
+							<td>{{ student.email }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+	<script type="text/javascript">
+		new DataTable('#students');
+	</script>
+</body>
+</html>
