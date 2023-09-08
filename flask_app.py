@@ -41,5 +41,9 @@ def getData():
     cursor.close()
     return render_template('students.html', students=students)
 
+@app.route('/admin', methods=['GET'])
+def getData():
+    return render_template('login.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
