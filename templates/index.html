@@ -6,12 +6,29 @@
 </head>
 <body class="d-flex justify-content-center align-items-center" style="height:100vh;background:#f1f1f1;">
     <form method="POST" class="w-25 bg-white p-3 shadow rounded">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+		   {% if messages %}
+                {% for category,message in messages %}
+                    <div class="alert {{ 'alert-danger' if category == 'error' else 'alert-success' }}">
+                    {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
         <h3 class="text-center">Submit Form</h3>
-        <label for="name" class="form-label mt-2">Name:</label>
-        <input type="text" class="form-control" name="name" required>
-        <label for="email" class="form-label mt-2">Email:</label>
-        <input type="email" class="form-control mb-2"  name="email" required>
-        <button type="submit" class="btn btn-primary">Submit</button> <a href="students">Show Student Data</a>
+        <input type="text" class="form-control mb-2" name="name" required placeholder="Name">
+        <input type="email" class="form-control mb-2"  name="email" placeholder="Email" required>
+        <select name="gender" class="form-select mb-2">
+            <option disabled selected>Select Gender</option>
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select>
+        <div class="d-flex align-items-center mb-2">
+            <label class="form-label me-2">Dob</label>
+            <input type="date" class="form-control"  name="dob" required>
+        </div>
+        <input type="text" class="form-control mb-2"  name="class" placeholder="Class" required>
+        <button type="submit" class="btn btn-primary">Submit</button> <a href="students" class="nav-link ps-0 ms-0">Show Student Data</a>
     </form>
 </body>
 </html>
